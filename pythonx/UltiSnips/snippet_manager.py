@@ -135,10 +135,10 @@ class SnippetManager(object):
 
         """
         _vim.command('let g:ulti_expand_or_jump_res = 1')
-        rv = self._try_expand()
+        rv = self._jump()
         if not rv:
             _vim.command('let g:ulti_expand_or_jump_res = 2')
-            rv = self._jump()
+            rv = self._try_expand()
         if not rv:
             _vim.command('let g:ulti_expand_or_jump_res = 0')
             self._handle_failure(self.expand_trigger)
